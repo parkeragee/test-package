@@ -3,38 +3,44 @@ const shell = require("shelljs");
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 
-const options = [
-    'styles',
-    'javascript',
-    'python',
-    'local config files (local.json, local_settings.py, etc.)'
-];
-
-const files = [
-    '.stylelintrc',
+const styleFiles = ['.stylelintrc'];
+const backendFiles = ['.flake8'];
+const frontendFiles = [
     'prettierignore',
     'prettier.config.js',
     'babel.config.js',
     'jest.config.js',
     'jest.setup.js',
     '.eslintrc',
-    '.flake8',
 ];
 
+const optionMap = {
+    styles: styleFiles,
+    javascript: frontendFiles,
+    python: backendFiles,
+};
+
 const runConfig = answers => {
-    let filesToCopy = answers.fileList;
-    for (const file of filesToCopy) {
-        shell.echo(chalk.yellow(`Setting up your ${file} file..`));
-        shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
-    }
+    const configTypes = answers.configTypes;
+    configTypes.map(type => {
+        for (const file of optionMap[type]) {
+            shell.echo(chalk.yellow(`Setting up your ${file} file..`));
+            shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
+        }
+    });
 }
 
 const go = async () => await inquirer.prompt([
     {
         type: 'checkbox',
-        name: 'fileList',
+        name: 'configTypes',
         message: 'Select the files you want to configure',
-        choices: options,
+        choices: [
+            'styles',
+            'javascript',
+            'python',
+            'local config files (local.json, local_settings.py, etc.)'
+        ],
     },
 ]).then(answers => {
     runConfig(answers);
