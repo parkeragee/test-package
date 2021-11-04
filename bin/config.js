@@ -3,8 +3,6 @@ const shell = require("shelljs");
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 
-const type = process.argv[2];
-
 const frontendConfigs = [
     '.stylelintrc',
     'prettierignore',
@@ -18,7 +16,6 @@ const frontendConfigs = [
 const backendConfigs = [
     '.flake8',
 ];
-
 
 const runConfig = (type) => {
     let filesToCopy = [];
@@ -37,7 +34,7 @@ const runConfig = (type) => {
 
 const go = async () => await inquirer.prompt([
     {
-        type: 'list',
+        type: 'checkbox',
         name: 'configType',
         message: 'Do you want to setup config files for your frontend, backend, or both?',
         choices: ['both', 'frontend', 'backend']
