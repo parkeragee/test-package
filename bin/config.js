@@ -15,7 +15,7 @@ const files = [
 ];
 
 const runConfig = fileList => {
-    shell.echo(fileList);
+    shell.echo(fileList.join(' '));
     let filesToCopy = [];
     for (const file of filesToCopy) {
         shell.echo(chalk.yellow(`Setting up your ${file} file..`));
