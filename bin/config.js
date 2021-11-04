@@ -20,8 +20,9 @@ const backendConfigs = [
 ];
 
 
-const runConfig = type => {
+const runConfig = (type, shouldOverwrite = false) => {
     let filesToCopy = [];
+    const copyOptions = shouldOverwrite ? '-Rf' : '-R';
     if (type === 'backend') {
         filesToCopy = filesToCopy.concat(backendConfigs);
     } else if (type === 'frontend') {
@@ -31,7 +32,7 @@ const runConfig = type => {
     }
     for (const file of filesToCopy) {
         shell.echo(chalk.yellow(`Setting up your ${file} file..`));
-        shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
+        shell.cp(copyOptions, `${__dirname}/config-files/${file}`, `./${file}`);
     }
 }
 
@@ -49,7 +50,8 @@ const go = async () => await inquirer.prompt([
         choices: ['yes', 'no']
     },
 ]).then(answers => {
-    runConfig(answers.configType);
+    const shouldOverwrite = answers.overwrite === 'yes';
+    runConfig(answers.configType, shouldOverwrite);
     shell.echo(chalk.greenBright('✅ Done configuring your project'));
 });
 
