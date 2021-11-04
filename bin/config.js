@@ -9,6 +9,7 @@ const filesToCopy = [
     'jest.config.js',
     'jest.setup.js',
     '.eslintrc',
+    '.flake8',
 ];
 
 for (const file of filesToCopy) {
