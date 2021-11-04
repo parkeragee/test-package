@@ -3,6 +3,7 @@ const shell = require("shelljs");
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 
+const LOCAL_CONFING_TYPE = 'local config files (local.json, local_settings.py, etc.)';
 const styleFiles = ['.stylelintrc'];
 const backendFiles = ['.flake8'];
 const frontendFiles = [
@@ -23,9 +24,18 @@ const optionMap = {
 const runConfig = answers => {
     const configTypes = answers.configTypes;
     configTypes.map(type => {
-        for (const file of optionMap[type]) {
-            shell.echo(chalk.yellow(`Setting up your ${file} file..`));
-            shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
+        if (type === LOCAL_CONFING_TYPE) {
+            try {
+                shell.exec(`cat config/env.template.json | sed -e 's/ENV/'$(whoami)'/g' > config/local.json`);
+                shell.exec(`cp config/local_settings.py.example config/local_settings.py`);
+            } catch(e) {
+                shell.echo(chalk.redBright('There was an error setting your local config files'));
+            }
+        } else {
+            for (const file of optionMap[type]) {
+                shell.echo(chalk.yellow(`Setting up your ${file} file..`));
+                shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
+            }
         }
     });
 }
@@ -39,7 +49,7 @@ const go = async () => await inquirer.prompt([
             'styles',
             'javascript',
             'python',
-            'local config files (local.json, local_settings.py, etc.)'
+            LOCAL_CONFING_TYPE
         ],
     },
 ]).then(answers => {
