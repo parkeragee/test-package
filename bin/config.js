@@ -14,9 +14,8 @@ const files = [
     'flake8',
 ];
 
-const runConfig = fileList => {
-    shell.echo(fileList.join(' '));
-    let filesToCopy = [];
+const runConfig = answers => {
+    let filesToCopy = answers.fileList;
     for (const file of filesToCopy) {
         shell.echo(chalk.yellow(`Setting up your ${file} file..`));
         shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
@@ -31,8 +30,7 @@ const go = async () => await inquirer.prompt([
         choices: files,
     },
 ]).then(answers => {
-    shell.echo(answers);
-    runConfig(answers.fileList);
+    runConfig(answers);
     shell.echo(chalk.greenBright('✅ Done configuring your project'));
 });
 
