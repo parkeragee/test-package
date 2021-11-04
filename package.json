@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/parkeragee/test-package#readme",
   "dependencies": {
+    "inquirer": "^8.2.0",
     "shelljs": "^0.8.4",
     "yargs": "^17.2.1"
   }
