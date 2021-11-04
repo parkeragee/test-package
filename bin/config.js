@@ -7,7 +7,7 @@ const options = [
     'styles',
     'javascript',
     'python',
-    'settings'
+    'local config files (local.json, local_settings.py, etc.)'
 ];
 
 const files = [
@@ -34,7 +34,7 @@ const go = async () => await inquirer.prompt([
         type: 'checkbox',
         name: 'fileList',
         message: 'Select the files you want to configure',
-        choices: files,
+        choices: options,
     },
 ]).then(answers => {
     runConfig(answers);
