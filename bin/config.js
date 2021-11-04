@@ -17,6 +17,7 @@ const filesToCopy = [
 
 if (argv[0] === 'python') {
     console.log('Python only');
+    shell.exec('console.log(`Python only CLI`)');
 }
 
 for (const file of filesToCopy) {
