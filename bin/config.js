@@ -21,6 +21,7 @@ const backendConfigs = [
 
 
 const runConfig = type => {
+    shell.echo(type);
     let filesToCopy = [];
     if (type === 'backend') {
         shell.echo(chalk.yellow('Configuring backend'));
@@ -41,14 +42,14 @@ const go = async () => await inquirer.prompt([
     {
         type: 'list',
         name: 'configType',
-        message: 'Do you want to setup config files for your Frontend, Backend, or Both?',
-        choices: ['Frontend', 'Backend', 'Both']
+        message: 'Do you want to setup config files for your frontend, backend, or both?',
+        choices: ['frontend', 'backend', 'both']
     },
     {
         type: 'list',
         name: 'overwrite',
         message: 'Do you want to overwrite your current config files?',
-        choices: ['Yes', 'No']
+        choices: ['yes', 'no']
     },
 ]).then(answers => {
     runConfig(answers.configType);
