@@ -19,10 +19,12 @@ const backendConfigs = [
 ];
 
 let filesToCopy = [];
-
+shell.echo(argv);
 if (argv[0] === 'backend') {
+    shell.echo('Configuring backend');
     filesToCopy = filesToCopy.concat(backendConfigs);
 } else if (argv[0] === 'frontend') {
+    shell.echo('Configuring frontend');
     filesToCopy = filesToCopy.concat(frontendConfigs);
 } else {
     filesToCopy = filesToCopy.concat(frontendConfigs).concat(backendConfigs);
