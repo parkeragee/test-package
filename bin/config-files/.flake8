@@ -50,4 +50,3 @@ exclude =
     .nvmrc,
     .stylelintrc,
     Dockerfile,
-    NEW,

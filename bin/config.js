@@ -23,6 +23,7 @@ const backendConfigs = [
 const runConfig = (type, shouldOverwrite = false) => {
     let filesToCopy = [];
     const copyOptions = shouldOverwrite ? '-Rf' : '-R';
+    shell.echo(copyOptions);
     if (type === 'backend') {
         filesToCopy = filesToCopy.concat(backendConfigs);
     } else if (type === 'frontend') {
