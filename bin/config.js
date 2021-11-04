@@ -3,6 +3,13 @@ const shell = require("shelljs");
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 
+const options = [
+    'styles',
+    'javascript',
+    'python',
+    'settings'
+];
+
 const files = [
     '.stylelintrc',
     'prettierignore',
@@ -27,7 +34,7 @@ const go = async () => await inquirer.prompt([
         type: 'checkbox',
         name: 'fileList',
         message: 'Select the files you want to configure',
-        choices: files,
+        choices: options,
     },
 ]).then(answers => {
     runConfig(answers);
