@@ -14,8 +14,8 @@ const filesToCopy = [
     '.eslintrc',
     '.flake8',
 ];
-console.log(argv);
-if (argv.python) {
+
+if (argv[0] === 'python') {
     console.log('Python only');
 }
 
