@@ -41,13 +41,11 @@ inquirer.prompt([
     {
         name: 'configType',
         message: 'Do you want to setup config files for your Frontend, Backend, or Both?',
-        default: 'Both',
         choices: ['Frontend', 'Backend', 'Both']
     },
     {
         name: 'overwrite',
         message: 'Do you want to overwrite your current config files?',
-        default: 'No',
         choices: ['Yes', 'No']
     },
 ]).then(answers => {
