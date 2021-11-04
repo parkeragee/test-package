@@ -18,7 +18,7 @@ const backendConfigs = [
     '.flake8',
 ];
 
-const filesToCopy = [];
+let filesToCopy = [];
 
 if (argv[0] === 'backend') {
     filesToCopy = filesToCopy.concat(backendConfigs);
