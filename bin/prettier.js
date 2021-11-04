@@ -7,4 +7,4 @@ const prettierConfig = require('./prettier-config');
 // shell.exec("prettier 'src/**/*.{js,json}' --write");
 
 shell.echo("Setting up your Prettier config files now..");
-shell.exec(`echo \'${prettierConfig}\' > .prettier.config.js`);
+shell.exec(`echo \'${JSON.stringify(prettierConfig)}\' > .prettier.config.js`);
