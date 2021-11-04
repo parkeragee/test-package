@@ -25,12 +25,8 @@ const runConfig = answers => {
     const configTypes = answers.configTypes;
     configTypes.map(type => {
         if (type === LOCAL_CONFING_TYPE) {
-            try {
-                shell.exec(`cat config/env.template.json | sed -e 's/ENV/'$(whoami)'/g' > config/local.json`);
-                shell.exec(`cp config/local_settings.py.example config/local_settings.py`);
-            } catch(e) {
-                shell.echo(chalk.redBright('There was an error setting your local config files'));
-            }
+            shell.exec(`cat config/env.template.json | sed -e 's/ENV/'$(whoami)'/g' > config/local.json`);
+            shell.exec(`cp config/local_settings.py.example config/local_settings.py`);
         } else {
             for (const file of optionMap[type]) {
                 shell.echo(chalk.yellow(`Setting up your ${file} file..`));
