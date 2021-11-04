@@ -4,7 +4,11 @@ const shell = require("shelljs");
 const filesToCopy = [
     '.stylelintrc',
     'prettierignore',
-    'prettier.config.js'
+    'prettier.config.js',
+    'babel.config.js',
+    'jest.config.js',
+    'jest.setup.js',
+    '.eslintrc',
 ];
 
 for (const file of filesToCopy) {

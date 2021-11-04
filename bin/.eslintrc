@@ -1,0 +1,25 @@
+{
+    "root": true,
+    "parser": "babel-eslint",
+    "plugins": ["react", "react-hooks", "testing-library", "jest-dom"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended",
+        "prettier"
+    ],
+    "env": {
+        "browser": true,
+        "node": true,
+        "jest": true,
+        "es6": true
+    },
+    "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/react-in-jsx-scope": 0,
+        "react/jsx-uses-react": 0
+    }
+}
