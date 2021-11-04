@@ -3,7 +3,7 @@ const shell = require("shelljs");
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 
-const frontendConfigs = [
+const files = [
     '.stylelintrc',
     'prettierignore',
     'prettier.config.js',
@@ -11,21 +11,12 @@ const frontendConfigs = [
     'jest.config.js',
     'jest.setup.js',
     '.eslintrc',
+    'flake8',
 ];
 
-const backendConfigs = [
-    '.flake8',
-];
-
-const runConfig = (type) => {
+const runConfig = fileList => {
+    shell.echo(fileList);
     let filesToCopy = [];
-    if (type === 'backend') {
-        filesToCopy = filesToCopy.concat(backendConfigs);
-    } else if (type === 'frontend') {
-        filesToCopy = filesToCopy.concat(frontendConfigs);
-    } else {
-        filesToCopy = filesToCopy.concat(frontendConfigs).concat(backendConfigs);
-    }
     for (const file of filesToCopy) {
         shell.echo(chalk.yellow(`Setting up your ${file} file..`));
         shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
@@ -35,12 +26,12 @@ const runConfig = (type) => {
 const go = async () => await inquirer.prompt([
     {
         type: 'checkbox',
-        name: 'configType',
-        message: 'Do you want to setup config files for your frontend, backend, or both?',
-        choices: ['both', 'frontend', 'backend']
+        name: 'fileList',
+        message: 'Select the files you want to configure',
+        choices: files,
     },
 ]).then(answers => {
-    runConfig(answers.configType);
+    runConfig(answers.fileList);
     shell.echo(chalk.greenBright('✅ Done configuring your project'));
 });
 
