@@ -4,7 +4,7 @@ const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
 
-const filesToCopy = [
+const frontendConfigs = [
     '.stylelintrc',
     'prettierignore',
     'prettier.config.js',
@@ -12,12 +12,20 @@ const filesToCopy = [
     'jest.config.js',
     'jest.setup.js',
     '.eslintrc',
+];
+
+const backendConfigs = [
     '.flake8',
 ];
 
-if (argv[0] === 'python') {
-    console.log('Python only');
-    shell.exec('console.log(`Python only CLI`)');
+const filesToCopy = [];
+
+if (argv[0] === 'backend') {
+    filesToCopy = filesToCopy.concat(backendConfigs);
+} else if (argv[0] === 'frontend') {
+    filesToCopy = filesToCopy.concat(frontendConfigs);
+} else {
+    filesToCopy = filesToCopy.concat(frontendConfigs).concat(backendConfigs);
 }
 
 for (const file of filesToCopy) {
