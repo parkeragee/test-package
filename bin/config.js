@@ -21,13 +21,10 @@ const backendConfigs = [
 
 
 const runConfig = type => {
-    shell.echo(type);
     let filesToCopy = [];
     if (type === 'backend') {
-        shell.echo(chalk.yellow('Configuring backend'));
         filesToCopy = filesToCopy.concat(backendConfigs);
     } else if (type === 'frontend') {
-        shell.echo(chalk.yellow('Configuring frontend'));
         filesToCopy = filesToCopy.concat(frontendConfigs);
     } else {
         filesToCopy = filesToCopy.concat(frontendConfigs).concat(backendConfigs);
@@ -43,7 +40,7 @@ const go = async () => await inquirer.prompt([
         type: 'list',
         name: 'configType',
         message: 'Do you want to setup config files for your frontend, backend, or both?',
-        choices: ['frontend', 'backend', 'both']
+        choices: ['both', 'frontend', 'backend']
     },
     {
         type: 'list',
@@ -53,7 +50,7 @@ const go = async () => await inquirer.prompt([
     },
 ]).then(answers => {
     runConfig(answers.configType);
-    shell.echo(chalk.greenBright('Done configuring your project'));
+    shell.echo(chalk.greenBright('✅ Done configuring your project'));
 });
 
 go();
