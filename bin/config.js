@@ -1,5 +1,8 @@
 #! /usr/bin/env node
 const shell = require("shelljs");
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers')
+const argv = yargs(hideBin(process.argv)).argv
 
 const filesToCopy = [
     '.stylelintrc',
@@ -11,6 +14,10 @@ const filesToCopy = [
     '.eslintrc',
     '.flake8',
 ];
+
+if (argv.python) {
+    console.log('Python only');
+}
 
 for (const file of filesToCopy) {
     shell.echo(`Setting up your ${file} file..`);
