@@ -2,12 +2,12 @@
   "name": "test-package",
   "version": "1.0.0",
   "description": "Test",
-  "main": "shell.js",
+  "main": "config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "prettier-config": "bin/prettier.js"
+    "configFrontend": "bin/config.js"
   },
   "repository": {
     "type": "git",
