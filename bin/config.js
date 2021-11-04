@@ -18,7 +18,7 @@ const files = [
     'jest.config.js',
     'jest.setup.js',
     '.eslintrc',
-    'flake8',
+    '.flake8',
 ];
 
 const runConfig = answers => {
