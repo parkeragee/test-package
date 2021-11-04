@@ -14,5 +14,5 @@ const filesToCopy = [
 
 for (const file of filesToCopy) {
     shell.echo(`Setting up your ${file} file..`);
-    shell.cp('-R', `${__dirname}/${file}`, `./${file}`);
+    shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
 }
