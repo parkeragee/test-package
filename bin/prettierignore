@@ -1,0 +1,26 @@
+# Ignore artifacts:
+build
+coverage
+
+.idea/*
+config/local_settings.py
+config/local.json
+__pycache__
+node_modules
+npm-debug.log
+lib/
+public/
+.ipynb_checkpoints/
+src/main.css
+src/main.js
+src/index.html
+*.map
+*.pyc
+*.ipynb
+.idea/
+datadir
+snapshot.json
+eslint.xml
+.DS_Store
+wiki
+package-lock.json
