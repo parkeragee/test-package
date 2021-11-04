@@ -5,9 +5,9 @@ const prettierConfig = require('./prettier.config');
 const stylelintConfig = require('./stylelint');
 // const prettierIgnoreConfig = require('./prettierignore');
 
-process.env.PATH += (path.delimiter + path.join(process.cwd(), 'node_modules', '.bin'));
+const filePath = process.env.PATH += (path.delimiter + path.join(process.cwd(), 'node_modules', 'test-package'));
 
-console.log(process.env.PATH);
+
 
 // shell.echo("Setting up your Prettier config files now..");
 // shell.exec(`echo \'${JSON.stringify(stylelintConfig, null, 2)}\' > .stylelintrc`);
@@ -15,5 +15,5 @@ console.log(process.env.PATH);
 shell.echo("Setting up your StyleLint config file..");
 shell.exec(`echo \'${JSON.stringify(stylelintConfig, null, 2)}\' > .stylelintrc`);
 
-// shell.echo("Setting up your .prettierignore config file..");
-// shell.exec(`echo \'${prettierIgnoreConfig}\' > .prettierignore`);
+shell.echo("Setting up your .prettierignore config file..");
+shell.cp('-R', `${filePath}/prettierignore`, './prettierignore');
