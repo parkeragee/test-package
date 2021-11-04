@@ -34,7 +34,7 @@ const go = async () => await inquirer.prompt([
         type: 'checkbox',
         name: 'fileList',
         message: 'Select the files you want to configure',
-        choices: options,
+        choices: files,
     },
 ]).then(answers => {
     runConfig(answers);
