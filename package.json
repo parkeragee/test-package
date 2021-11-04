@@ -4,12 +4,10 @@
   "description": "Test",
   "main": "shell.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "shell": "node shell.js",
-    "check-env": "node -e 'console.log(process.env)' | grep npm"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "shell": "bin/shell.js"
+    "prettier-config": "bin/prettier.js"
   },
   "repository": {
     "type": "git",
