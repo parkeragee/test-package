@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 const shell = require("shelljs");
 
-const argv = process.argv;
+const type = process.argv[2];
 
 const frontendConfigs = [
     '.stylelintrc',
@@ -18,11 +18,11 @@ const backendConfigs = [
 ];
 
 let filesToCopy = [];
-shell.echo(argv);
-if (argv[0] === 'backend') {
+
+if (type === 'backend') {
     shell.echo('Configuring backend');
     filesToCopy = filesToCopy.concat(backendConfigs);
-} else if (argv[0] === 'frontend') {
+} else if (type === 'frontend') {
     shell.echo('Configuring frontend');
     filesToCopy = filesToCopy.concat(frontendConfigs);
 } else {
