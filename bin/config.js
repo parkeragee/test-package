@@ -24,30 +24,25 @@ inquirer
   .prompt([
     {
       name: 'faveReptile',
-      message: 'What is your favorite reptile?',
-      default: 'Alligators'
-    },
-    {
-      name: 'faveColor',
-      message: 'What is your favorite color?',
-      default: '#008f68'
+      message: 'Do you want to configure your frontend, backend, or both?',
+      default: 'Both'
     },
   ])
   .then(answers => {
-    console.info('Answers:', answers);
+    shell.echo('Answers:', answers);
   });
 
-if (type === 'backend') {
-    shell.echo('Configuring backend');
-    filesToCopy = filesToCopy.concat(backendConfigs);
-} else if (type === 'frontend') {
-    shell.echo('Configuring frontend');
-    filesToCopy = filesToCopy.concat(frontendConfigs);
-} else {
-    filesToCopy = filesToCopy.concat(frontendConfigs).concat(backendConfigs);
-}
+// if (type === 'backend') {
+//     shell.echo('Configuring backend');
+//     filesToCopy = filesToCopy.concat(backendConfigs);
+// } else if (type === 'frontend') {
+//     shell.echo('Configuring frontend');
+//     filesToCopy = filesToCopy.concat(frontendConfigs);
+// } else {
+//     filesToCopy = filesToCopy.concat(frontendConfigs).concat(backendConfigs);
+// }
 
-for (const file of filesToCopy) {
-    shell.echo(`Setting up your ${file} file..`);
-    shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
-}
+// for (const file of filesToCopy) {
+//     shell.echo(`Setting up your ${file} file..`);
+//     shell.cp('-Rf', `${__dirname}/config-files/${file}`, `./${file}`);
+// }
