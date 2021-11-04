@@ -1,0 +1,28 @@
+{
+  "name": "test-package",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "shell.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "shell": "node shell.js",
+    "check-env": "node -e 'console.log(process.env)' | grep npm"
+  },
+  "bin": {
+    "shell": "bin/shell.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkeragee/test-package.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parkeragee/test-package/issues"
+  },
+  "homepage": "https://github.com/parkeragee/test-package#readme",
+  "dependencies": {
+    "shelljs": "^0.8.4"
+  }
+}
