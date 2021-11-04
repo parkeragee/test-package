@@ -37,7 +37,7 @@ const runConfig = type => {
     }
 }
 
-inquirer.prompt([
+const go = async () => await inquirer.prompt([
     {
         name: 'configType',
         message: 'Do you want to setup config files for your Frontend, Backend, or Both?',
@@ -52,3 +52,5 @@ inquirer.prompt([
     runConfig(answers.configType);
     shell.echo(chalk.greenBright('Done configuring your project'));
 });
+
+go();
