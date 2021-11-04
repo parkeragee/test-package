@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 const shell = require("shelljs");
+const inquirer = require('inquirer');
 
 const type = process.argv[2];
 
@@ -18,6 +19,23 @@ const backendConfigs = [
 ];
 
 let filesToCopy = [];
+
+inquirer
+  .prompt([
+    {
+      name: 'faveReptile',
+      message: 'What is your favorite reptile?',
+      default: 'Alligators'
+    },
+    {
+      name: 'faveColor',
+      message: 'What is your favorite color?',
+      default: '#008f68'
+    },
+  ])
+  .then(answers => {
+    console.info('Answers:', answers);
+  });
 
 if (type === 'backend') {
     shell.echo('Configuring backend');
