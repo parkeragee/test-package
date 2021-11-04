@@ -31,6 +31,7 @@ const go = async () => await inquirer.prompt([
         choices: files,
     },
 ]).then(answers => {
+    shell.echo(answers);
     runConfig(answers.fileList);
     shell.echo(chalk.greenBright('✅ Done configuring your project'));
 });
