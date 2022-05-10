@@ -36,7 +36,7 @@ const runConfig = answers => {
     });
 }
 
-const go = async () => await inquirer.prompt([
+inquirer.prompt([
     {
         type: 'checkbox',
         name: 'configTypes',
@@ -52,5 +52,3 @@ const go = async () => await inquirer.prompt([
     runConfig(answers);
     shell.echo(chalk.greenBright('✅ Done configuring your project'));
 });
-
-go();
